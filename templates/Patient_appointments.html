@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Appointments</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='Patient_appointments.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>Book an Appointment</h1>
+    <form method="POST">
+      <label>Patient Name:</label>
+      <input type="text" name="patient_name" required />
+
+      <label>Doctor:</label>
+      <input type="text" name="doctor" required />
+
+      <label>Department:</label>
+      <input type="text" name="department" required />
+
+      <label>Date:</label>
+      <input type="date" name="date" required />
+
+      <label>Time:</label>
+      <input type="time" name="time" required />
+
+      <button type="submit">Book Appointment</button>
+    </form>
+
+    <h2>My Appointments</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Patient</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Doctor</th>
+          <th>Department</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appt in appointments %}
+        <tr>
+          <td>{{ appt.patient }}</td>
+          <td>{{ appt.date }}</td>
+          <td>{{ appt.time }}</td>
+          <td>{{ appt.doctor }}</td>
+          <td>{{ appt.department }}</td>
+          <td>{{ appt.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
